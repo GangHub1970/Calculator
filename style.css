@@ -6,6 +6,7 @@ body {
 button {
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .calculator {
@@ -32,8 +33,11 @@ button {
   position: absolute;
   right: 3vw;
   bottom: 0;
+  width: 90%;
+  text-align: right;
   font-size: 10vw;
   color: white;
+  overflow-x: auto;
 }
 
 .calculator .main {
@@ -43,16 +47,20 @@ button {
   grid-gap: 2%;
   align-items: center;
   height: 70%;
+  pointer-events: none;
 }
 
 .calculator .main .btn {
   width: 88%;
   height: 100%;
   margin: auto;
+  padding: 0;
   font-size: 5vw;
   font-weight: 500;
   border-radius: 50%;
   transition: 0.3s;
+  overflow: hidden;
+  pointer-events: auto;
 }
 
 .calculator .main .btn span,
@@ -62,6 +70,7 @@ button {
   align-items: center;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
 
 .calculator .main .btn--gray {
@@ -98,5 +107,6 @@ button {
 
 .calculator .main .btn--0 span {
   justify-content: flex-start;
-  margin-left: 2.4vw;
+  padding-left: 3.6vw;
+  box-sizing: border-box;
 }
