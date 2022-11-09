@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.calculator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 60vw;
+  height: calc(60vw * 1.5);
+  margin: auto;
+  padding: 3vw;
+  border-radius: 20px;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+.calculator .result {
+  position: relative;
+  height: 30%;
+}
+
+.calculator .result span {
+  position: absolute;
+  right: 3vw;
+  bottom: 0;
+  font-size: 10vw;
+  color: white;
+}
+
+.calculator .main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 2%;
+  align-items: center;
+  height: 70%;
+}
+
+.calculator .main .btn {
+  width: 88%;
+  height: 100%;
+  margin: auto;
+  font-size: 5vw;
+  font-weight: 500;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.calculator .main .btn span,
+.calculator .main .btn i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.calculator .main .btn--gray {
+  background-color: darkgray;
+}
+
+.calculator .main .btn--gray:hover {
+  background-color: white;
+}
+
+.calculator .main .btn--orange {
+  color: white;
+  background-color: orange;
+}
+
+.calculator .main .btn--orange:hover {
+  background-color: rgb(255, 206, 114);
+}
+
+.calculator .main .btn--dark-gray {
+  color: white;
+  background-color: rgb(82, 82, 82);
+}
+
+.calculator .main .btn--dark-gray:hover {
+  background-color: rgb(124, 124, 124);
+}
+
+.calculator .main .btn--0 {
+  grid-column: 1 / 3;
+  text-align: start;
+  border-radius: 40px;
+}
+
+.calculator .main .btn--0 span {
+  justify-content: flex-start;
+  margin-left: 2.4vw;
+}
