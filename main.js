@@ -1,8 +1,10 @@
 const mainBtns = document.querySelector(".main");
 const result = document.querySelector(".result span");
 const acBtn = document.querySelector(".btn--ac span");
+const backBtn = document.querySelector(".back");
 
 let decimalPoint = 0;
+let calculate = false;
 let calculating = false;
 let calNum = 0;
 let kindOfCal;
@@ -34,10 +36,10 @@ function onBtnClick(event) {
         }
         break;
       default:
-        if (calculating) {
+        if (calculate) {
           calNum = resultText;
           refreshResult(targetText);
-          calculating = !calculating;
+          calculate = !calculate;
           return;
         }
         if (resultText.includes(".")) decimalPoint++;
@@ -45,6 +47,10 @@ function onBtnClick(event) {
           if (targetText === "0") return;
           acBtnChange();
           refreshResult(targetText);
+        } else if (resultText === "-0") {
+          if (targetText === "0") return;
+          acBtnChange();
+          refreshResult(-targetText);
         } else {
           refreshResult(resultText + targetText);
         }
@@ -65,6 +71,7 @@ function onBtnClick(event) {
       }
     } else if (id === "equal") {
       const nowResult = result.textContent;
+      calculating = !calculating;
 
       switch (kindOfCal) {
         case "div":
@@ -87,11 +94,12 @@ function onBtnClick(event) {
       calNum = 0;
       kindOfCal = undefined;
     } else {
+      if (calculating) return;
       const btnNode = target.parentElement;
 
       calculating = !calculating;
-      btnNode.style.color = "orange";
-      btnNode.style.backgroundColor = "white";
+      calculate = !calculate;
+      btnNode.classList.toggle("clicked");
 
       switch (id) {
         case "div":
@@ -113,8 +121,8 @@ function onBtnClick(event) {
 
 function changeColor(value) {
   const btn = document.querySelector(`.btn--${value}`);
-  btn.style.color = "white";
-  btn.style.backgroundColor = "orange";
+
+  btn.classList.toggle("clicked");
 }
 
 function acBtnChange() {
@@ -129,4 +137,20 @@ function refreshResult(value) {
   result.textContent = value;
 }
 
+function onBackClick() {
+  const text = result.textContent;
+
+  if (text === "0") return;
+  if (text.length > 1) {
+    if (text.length === 2 && text.includes("-")) {
+      refreshResult("0");
+    } else {
+      refreshResult(text.slice(0, text.length - 1));
+    }
+  } else {
+    refreshResult("0");
+  }
+}
+
 mainBtns.addEventListener("click", onBtnClick);
+backBtn.addEventListener("click", onBackClick);

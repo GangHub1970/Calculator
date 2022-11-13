@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  font-family: sans-serif;
 }
 
 button {
@@ -16,9 +15,11 @@ button {
   left: 0;
   right: 0;
   width: 60vw;
+  max-width: 430px;
   height: calc(60vw * 1.5);
+  max-height: 645px;
   margin: auto;
-  padding: 3vw;
+  padding: 3vmin;
   border-radius: 20px;
   background-color: black;
   box-sizing: border-box;
@@ -31,11 +32,11 @@ button {
 
 .calculator .result span {
   position: absolute;
-  right: 3vw;
+  right: 3%;
   bottom: 0;
   width: 90%;
   text-align: right;
-  font-size: 10vw;
+  font-size: 10vmin;
   color: white;
   overflow-x: auto;
 }
@@ -55,7 +56,7 @@ button {
   height: 100%;
   margin: auto;
   padding: 0;
-  font-size: 5vw;
+  font-size: 5vmin;
   font-weight: 500;
   border-radius: 50%;
   transition: 0.3s;
@@ -99,6 +100,11 @@ button {
   background-color: rgb(124, 124, 124);
 }
 
+.calculator .main .btn.clicked {
+  color: orange;
+  background-color: white;
+}
+
 .calculator .main .btn--0 {
   grid-column: 1 / 3;
   text-align: start;
@@ -107,6 +113,21 @@ button {
 
 .calculator .main .btn--0 span {
   justify-content: flex-start;
-  padding-left: 3.6vw;
+  padding-left: 3.6vmin;
   box-sizing: border-box;
+}
+
+.calculator .back {
+  position: absolute;
+  top: 3vmin;
+  right: 3vmin;
+  color: white;
+  font-size: 4vmin;
+  background: transparent;
+  transition: 0.3s;
+}
+
+.calculator .back:hover {
+  color: orange;
+  transform: scale(1.1);
 }
